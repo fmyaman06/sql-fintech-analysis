@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from sqlalchemy import create_engine
+from groq import Groq
+import os
+from dotenv import load_dotenv
+
 
 # Sayfa ayarları
 st.set_page_config(
@@ -78,3 +82,30 @@ st.divider()
 # Veri tablosu
 st.subheader("📋 İşlem Detayları")
 st.dataframe(filtered_df, use_container_width=True)
+from dotenv import load_dotenv
+import os
+
+load_dotenv(dotenv_path=".env")
+
+load_dotenv()
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+
+st.divider()
+st.subheader("🤖 AI Analiz Asistanı")
+
+soru = st.text_input("Veri hakkında soru sor:", 
+                      placeholder="Örnek: En riskli kategori hangisi?")
+
+if soru:
+    with st.spinner("Analiz yapılıyor..."):
+        ozet = filtered_df.groupby('kategori')['tutar'].sum().to_string()
+        
+        response = client.chat.completions.create(
+            model = "llama-3.3-70b-versatile",
+            messages = [
+                {"role": "system", "content": "Sen bir FinTech analistisin. Türkçe, kısa cevap ver."},
+                {"role": "user", "content": f"Veri:\n{ozet}\n\nSoru: {soru}"}
+            ]
+        )
+        
+        st.success(response.choices[0].message.content)
