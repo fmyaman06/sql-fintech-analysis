@@ -24,4 +24,5 @@ git clone https://github.com/fmyaman06/sql-fintech-analysis.git
 pip install pandas sqlalchemy matplotlib jupyter
 jupyter notebook
 ```
-
+## 🚀 Canlı Demo
+[Dashboard'u Görüntüle](https://sql-fintech-analysis-b8ghnftuihmpwzutqzshiv.streamlit.app)
