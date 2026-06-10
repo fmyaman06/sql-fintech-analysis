@@ -1,0 +1,11 @@
+islem_id,musteri_id,tutar,kategori,durum
+1,1,1500.0,Alışveriş,onaylı
+2,2,320.0,Fatura,onaylı
+3,3,8900.0,Transfer,beklemede
+4,1,450.0,Fatura,onaylı
+5,4,12000.0,Transfer,iptal
+6,2,75.0,Alışveriş,onaylı
+7,3,2200.0,Alışveriş,onaylı
+8,4,580.0,Fatura,onaylı
+9,1,3300.0,Transfer,onaylı
+10,4,990.0,Alışveriş,beklemede
