@@ -1,4 +1,4 @@
-# 🏦 FinTech İşlem Analizi / FinTech Transaction Analysis
+# 🏦 FinTech AI Veri Analizi / FinTech AI Data Analysis
 
 [🇹🇷 Türkçe](#türkçe) | [🇬🇧 English](#english)
 
@@ -6,16 +6,18 @@
 
 ## Türkçe
 
-Finansal işlem verilerini SQL ve Python ile analiz eden, Streamlit ile sunulan interaktif dashboard projesi.
+SQL, Python, makine öğrenmesi ve LLM teknolojilerini birleştiren, dbt pipeline'ı ile desteklenen tam kapsamlı bir FinTech veri analizi projesi.
 
 ### 🚀 Canlı Demo
-[Dashboard'u Görüntüle](https://sql-fintech-analysis-b8ghnftuihmpwzutqzshiv.streamlit.app)
+[Dashboard'u Görüntüle](BURAYA_LİNKİNİ_YAZ)
 
 ### 📊 Özellikler
-- Kategori ve durum bazında filtreleme
+- Kategori ve durum bazında filtrelenebilir dashboard
 - KPI kartları: toplam işlem, tutar, ortalama
 - İnteraktif Plotly grafikleri
-- İşlem detay tablosu
+- dbt pipeline'dan gelen risk analizi
+- 🤖 AI Analiz Asistanı — Groq LLM ile doğal dilde soru sor
+- Fraud detection modeli (Random Forest + SHAP)
 
 ### 🛠️ Kullanılan Teknolojiler
 | Teknoloji | Kullanım |
@@ -25,14 +27,27 @@ Finansal işlem verilerini SQL ve Python ile analiz eden, Streamlit ile sunulan 
 | pandas | Veri analizi |
 | Plotly | Görselleştirme |
 | Streamlit | Web uygulaması |
+| dbt | Veri pipeline |
+| scikit-learn | ML modelleri |
+| SHAP | Model açıklama |
+| LangChain | LLM zinciri |
+| Groq API | LLM (Llama 3.3) |
 | SQL | Veri sorgulama |
 
 ### 📁 Proje Yapısı
 sql-fintech-analysis/
-├── dashboard.py         # Streamlit uygulaması
-├── islemler.csv         # Veri seti
-├── requirements.txt     # Bağımlılıklar
-└── hafta1_sql_eda.ipynb # SQL & EDA notebook
+├── dashboard.py              # Streamlit uygulaması
+├── islemler.csv              # Veri seti
+├── requirements.txt          # Bağımlılıklar
+├── hafta1_sql_eda.ipynb      # SQL & pandas EDA
+├── hafta3_makine_ogrenmesi.ipynb  # ML & SHAP
+├── hafta4_llm_rag.ipynb      # LLM & RAG
+└── fintech_dbt/              # dbt modelleri
+└── models/
+├── staging/
+│   └── stg_islemler.sql
+└── marts/
+└── mart_risk_analizi.sql
 ### 🚀 Kurulum
 ```bash
 git clone https://github.com/fmyaman06/sql-fintech-analysis.git
@@ -41,20 +56,26 @@ pip install -r requirements.txt
 streamlit run dashboard.py
 ```
 
+### 👤 İletişim
+LinkedIn: [linkedin.com/in/fmyaman06](https://linkedin.com/in/fmyaman06)
+GitHub: [github.com/fmyaman06](https://github.com/fmyaman06)
+
 ---
 
 ## English
 
-An interactive dashboard project that analyzes financial transaction data using SQL and Python, presented with Streamlit.
+A full-stack FinTech data analysis project combining SQL, Python, machine learning, LLM technologies, and dbt pipeline.
 
 ### 🚀 Live Demo
-[View Dashboard](https://sql-fintech-analysis-b8ghnftuihmpwzutqzshiv.streamlit.app)
+[View Dashboard](BURAYA_LİNKİNİ_YAZ)
 
 ### 📊 Features
-- Filter by category and status
+- Filterable dashboard by category and status
 - KPI cards: total transactions, amount, average
 - Interactive Plotly charts
-- Transaction detail table
+- Risk analysis from dbt pipeline
+- 🤖 AI Analysis Assistant — ask questions in natural language via Groq LLM
+- Fraud detection model (Random Forest + SHAP)
 
 ### 🛠️ Tech Stack
 | Technology | Usage |
@@ -64,6 +85,11 @@ An interactive dashboard project that analyzes financial transaction data using 
 | pandas | Data analysis |
 | Plotly | Visualization |
 | Streamlit | Web application |
+| dbt | Data pipeline |
+| scikit-learn | ML models |
+| SHAP | Model explainability |
+| LangChain | LLM chain |
+| Groq API | LLM (Llama 3.3) |
 | SQL | Data querying |
 
 ### 🚀 Installation
