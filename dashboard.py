@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # ENV yükle
-client = Groq(api_key="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")
+client = Groq(api_key=os.environ.get("GROQ_API_KEY", ""))
 
 # Bağlantı
 engine = create_engine(
@@ -40,7 +40,7 @@ risk_df = risk_yukle()
 
 # Groq client
 
-client = Groq(api_key="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")
+client = Groq(api_key=os.environ.get("GROQ_API_KEY", ""))
 
 # Başlık
 st.title("🏦 FinTech İşlem Analizi")
