@@ -1,0 +1,71 @@
+[0m14:24:04.348754 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A736696DB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A73A09FE60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A739929670>]}
+
+
+============================== 14:24:04.419800 | 290ea366-b921-43ab-84ca-d65554ab389e ==============================
+[0m14:24:04.419800 [info ] [MainThread]: Running with dbt=1.11.11
+[0m14:24:04.424489 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\MSI\\.dbt', 'use_colors': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt init hafta5_dbt', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m14:24:04.620117 [info ] [MainThread]: Creating dbt configuration folder at C:\Users\MSI\.dbt
+[0m14:24:04.639962 [debug] [MainThread]: Starter project path: C:\Users\MSI\sql-fintech-analysis\dbt-env\Lib\site-packages\dbt\include\starter_project
+[0m14:24:04.779521 [info ] [MainThread]: 
+Your new dbt project "hafta5_dbt" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m14:24:04.781550 [info ] [MainThread]: Setting up your profile.
+[0m14:24:38.932916 [error] [MainThread]: Encountered an error:
+
+[0m14:24:38.941488 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\MSI\sql-fintech-analysis\dbt-env\Lib\site-packages\dbt\cli\requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MSI\sql-fintech-analysis\dbt-env\Lib\site-packages\dbt\cli\requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MSI\sql-fintech-analysis\dbt-env\Lib\site-packages\dbt\cli\main.py", line 488, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "C:\Users\MSI\sql-fintech-analysis\dbt-env\Lib\site-packages\dbt\task\init.py", line 346, in run
+    self.setup_profile(profile_name)
+  File "C:\Users\MSI\sql-fintech-analysis\dbt-env\Lib\site-packages\dbt\task\init.py", line 262, in setup_profile
+    self.create_profile_from_target(adapter, profile_name=profile_name)
+  File "C:\Users\MSI\sql-fintech-analysis\dbt-env\Lib\site-packages\dbt\task\init.py", line 179, in create_profile_from_target
+    self.create_profile_from_profile_template(profile_template, profile_name)
+  File "C:\Users\MSI\sql-fintech-analysis\dbt-env\Lib\site-packages\dbt\task\init.py", line 163, in create_profile_from_profile_template
+    target = self.generate_target_from_input(prompts, initial_target)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MSI\sql-fintech-analysis\dbt-env\Lib\site-packages\dbt\task\init.py", line 129, in generate_target_from_input
+    target[key] = click.prompt(
+                  ^^^^^^^^^^^^^
+  File "C:\Users\MSI\sql-fintech-analysis\dbt-env\Lib\site-packages\click\termui.py", line 218, in prompt
+    value = prompt_func(prompt)
+            ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MSI\sql-fintech-analysis\dbt-env\Lib\site-packages\click\termui.py", line 201, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m14:24:38.946139 [debug] [MainThread]: Command `dbt init` failed at 14:24:38.946139 after 36.64 seconds
+[0m14:24:38.948038 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A73B716330>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A73B90E900>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A73B8A1790>]}
+[0m14:24:38.948601 [debug] [MainThread]: Flushing usage events
+[0m14:24:40.719164 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:26:25.585320 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015301F1D1C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000153048DA2A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015304E60110>]}
+
+
+============================== 14:26:25.606701 | f348fdee-2465-4031-9aa3-54ec78cf75f3 ==============================
+[0m14:26:25.606701 [info ] [MainThread]: Running with dbt=1.11.11
+[0m14:26:25.606701 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\MSI\\.dbt', 'invocation_command': 'dbt init hafta5_dbt', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m14:26:25.681150 [info ] [MainThread]: A project called hafta5_dbt already exists here.
+[0m14:26:25.684789 [debug] [MainThread]: Command `dbt init` succeeded at 14:26:25.684789 after 1.49 seconds
+[0m14:26:25.684789 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000153064922D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001530655D4C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015304696C60>]}
+[0m14:26:25.684789 [debug] [MainThread]: Flushing usage events
+[0m14:26:28.437174 [debug] [MainThread]: An error was encountered while trying to flush usage events

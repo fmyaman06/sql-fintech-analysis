@@ -6,7 +6,6 @@ from groq import Groq
 import os
 from dotenv import load_dotenv
 
-
 # Sayfa ayarları
 st.set_page_config(
     page_title = "FinTech Dashboard",
@@ -14,12 +13,34 @@ st.set_page_config(
     layout     = "wide"
 )
 
+# ENV yükle
+client = Groq(api_key="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")
+
 # Bağlantı
+engine = create_engine(
+    "postgresql://postgres@localhost:5432/fintech_db"
+)
+
+# Veri yükle
 @st.cache_data
 def veri_yukle():
     return pd.read_csv('islemler.csv')
 
 df = veri_yukle()
+
+# dbt mart tablosunu yükle
+@st.cache_data
+def risk_yukle():
+    return pd.read_sql(
+        "SELECT * FROM dbt_dev.mart_risk_analizi ORDER BY iptal_orani DESC",
+        engine
+    )
+
+risk_df = risk_yukle()
+
+# Groq client
+
+client = Groq(api_key="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")
 
 # Başlık
 st.title("🏦 FinTech İşlem Analizi")
@@ -82,30 +103,52 @@ st.divider()
 # Veri tablosu
 st.subheader("📋 İşlem Detayları")
 st.dataframe(filtered_df, use_container_width=True)
-from dotenv import load_dotenv
-import os
-
-load_dotenv(dotenv_path=".env")
-
-load_dotenv()
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 st.divider()
+
+# Risk analizi
+st.subheader("🎯 Risk Analizi — dbt Pipeline")
+
+col_r1, col_r2 = st.columns(2)
+
+with col_r1:
+    st.markdown("**Kategori & Segment Bazında İptal Oranı**")
+    fig_risk = px.bar(
+        risk_df,
+        x       = 'kategori',
+        y       = 'iptal_orani',
+        color   = 'tutar_segmenti',
+        barmode = 'group',
+        title   = 'İptal Oranı (%)'
+    )
+    st.plotly_chart(fig_risk, use_container_width=True)
+
+with col_r2:
+    st.markdown("**Risk Tablosu**")
+    st.dataframe(
+        risk_df[['kategori', 'tutar_segmenti',
+                 'islem_sayisi', 'iptal_orani']],
+        use_container_width=True
+    )
+
+st.divider()
+
+# AI Analiz Asistanı
 st.subheader("🤖 AI Analiz Asistanı")
 
-soru = st.text_input("Veri hakkında soru sor:", 
+soru = st.text_input("Veri hakkında soru sor:",
                       placeholder="Örnek: En riskli kategori hangisi?")
 
 if soru:
     with st.spinner("Analiz yapılıyor..."):
-        ozet = filtered_df.groupby('kategori')['tutar'].sum().to_string()
-        
+        ozet_str = filtered_df.groupby('kategori')['tutar'].sum().to_string()
+
         response = client.chat.completions.create(
-            model = "llama-3.3-70b-versatile",
+            model    = "llama-3.3-70b-versatile",
             messages = [
                 {"role": "system", "content": "Sen bir FinTech analistisin. Türkçe, kısa cevap ver."},
-                {"role": "user", "content": f"Veri:\n{ozet}\n\nSoru: {soru}"}
+                {"role": "user", "content": f"Veri:\n{ozet_str}\n\nSoru: {soru}"}
             ]
         )
-        
+
         st.success(response.choices[0].message.content)
